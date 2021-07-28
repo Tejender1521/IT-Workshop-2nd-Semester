@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <style>
+        * {
+    font-family: 'Itim', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    color: rgb(0, 0, 0);
+  }
+  
+  button {
+      padding: 0.75rem 0.75rem;
+      border-radius: 4px;
+      line-height: 0.8;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+  }
+  
+  
+  div button {
+      background: linear-gradient(360deg, rgb(117, 245, 85),#45f7ee);
+      color: rgb(0, 0, 0);
+  }
+  button:hover {
+      border: 3px solid red ;
+  }
+  
+  .item
+  {
+      display: flex;
+      padding: 5px;
+      background: linear-gradient(250deg, rgb(255, 0, 0),#e22d2d,#2986f1,#473bee);
+      border-top: black dashed;
+      border-radius: 15px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+    </style>
+       
+</head>
+
+<body>
+    <div class="container"></div>
+        <div class="item">
+            1->Use JavaScript code to calculate double of the given number. 
+            <br>
+            <input type="" id="Number1" value="0" size="1">
+            <br>
+            <button type="button" onclick="problem1()">Submit</button>
+            <p id="R1">Answer</p>
+            <hr>
+           
+        </div>
+    
+    
+        <div class="item">2->Use JavaScript code to accept a day and checks whether is a weekend or a working day. <br>
+            <input id="DD" size="1" maxlength="2" placeholder="DD">
+            <input id="MM" size="1" maxlength="2"  placeholder="MM">
+            <input id="Year" placeholder="Year" size="1" maxlength="4">
+            <br>
+            <button type="button" onclick="problem2()">Submit</button>
+            <br>Day is <p id="R2">
+                . . . . . . . </p>
+            <hr>
+           
+        </div>
+    
+    
+        <div class="item">3->Use JavaScript code to calculate Fibonacci Series up to N terms. Where N is any given number.
+            <br>
+            <input id="num3" size="1">
+            <br>
+            <button type="button" onclick="problem3()">Submit</button>
+            <p id="R3">Solution</p>
+            <hr>
+           
+        </div>
+    
+    
+        <div class="item">4->Use JavaScript code to calculate square and cube of the number.
+            <br>
+            <input id="num4" size="1">
+            <br>
+            <button type="button" onclick="problem4()">Submit</button>
+            <p id="R4">Solution</p>
+            <hr>
+           
+        </div>
+    
+    
+        <div class="item">5->Use JavaScript code using mouse event so that by moving the mouse pointer over the text, the image should
+            display.
+            <p onmouseover="problem5_1()" onmouseout="problem5_2()">
+                <span id="R5_1">
+                    <button>HOVER THIS</button>
+                </span>
+                <span id="R5_2" style="display: none;"><img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkfNPYIpu0SmmEBkbwUA_IDkf_fle_UiNFzg&usqp=CAU">
+                </span>
+            </p>
+            <hr>
+            
+        </div>
+    
+    
+        <div class="item">6->Use JavaScript program to find greatest no. from any three given nos.
+            <br>
+            Number 1 = <input id="num6_1" size="2">
+            <br> Number 2 = <input id="num6_2" size="2">
+            <br>Number 3 = <input id="num6_3" size="2"><br>
+            <button type="button" onclick="problem6()">Submit</button>
+            <p id="R6">Largest Number</p>
+            <hr>
+            
+        </div>
+    
+    
+        <div class="item">7->Use JavaScript to calculate the sum of first N natural nos., where N is a any given no.
+            <br>
+            <input id="num7" size="1">
+            <br>
+            <button onclick="problem7()" type="button">Submit</button>
+            <p id="R7">Solution</p>
+            <hr>
+            
+        </div>
+    
+    
+        <div class="item">8->Use a JavaScript to change background color of the document by using mouseover event of button.
+            <br>
+            <button onmouseover="problem8_1()" onmouseout="problem8_2()">Hover For Background Change</button>
+            <hr>
+            
+        </div>
+    
+    
+        <div class="item">9->Use a JavaScript to check whether the given text is number or not.
+            <br>
+            <input id="num9">
+            <br>
+            <button onclick="problem9()">Submit</button>
+            <p id="R9"></p>
+            <hr>
+            
+        </div>
+    
+    
+        <div class="item">10->Use a JavaScript to check whether the given no. is +ve or –ve or zero.
+            <p>Number = <input size="1" id="num10"></p>
+            <button onclick="problem10()">Submit</button>
+            <p id="R10">Solution</p>
+           
+        </div>
+    </div>
+    
+
+
+    <script>
+        
+        function problem1() {
+            var num1 = Number(document.getElementById("Number1").value);
+            num1 = num1 + num1;
+            document.getElementById("R1").innerHTML = num1;
+        }
+
+        function problem2() {
+            var date = Number(document.getElementById("DD").value);
+            var month = Number(document.getElementById("MM").value);
+            var year = Number(document.getElementById("Year").value);
+            var century = year / 100;
+            if (century == 19) { century = 0; }
+            else if (century == 20) { century = 6; }
+            else if (century == 21) { century = 4; }
+            else if (century == 22) { century = 2; }
+            if (month == 1 || month == 10) { month = 0; }
+            else if (month == 5) { month = 1; }
+            else if (month == 8) { month = 2; }
+            else if (month == 2 || month == 3 || month == 11) { month = 3; }
+            else if (month == 6) { month = 4; }
+            else if (month == 9 || month == 12) { month = 5; }
+            else if (month == 4 || month == 7) { month = 6; }
+            console.log(year)
+            var day = month + date + century + (year % 100) + ((year % 100) / 4);
+            day = day % 7;
+            document.getElementById("R2").innerHTML = day;
+        }
+        function problem3() {
+            var n = Number(document.getElementById("num3").value);
+            var sum = 0, a = 0, b = 1;
+            for (var i = 1; i < n; i++) {
+                sum = a + b;
+                a = b;
+                b = sum;
+            }
+            document.getElementById("R3").innerHTML = sum;
+        }
+        function problem4() {
+            var num = Number(document.getElementById("num4").value);
+            var square = num * num;
+            var cube = square * num;
+            var ans = "Square =" + square + "<br>" + "Cube =" + cube;
+            document.getElementById("R4").innerHTML = ans;
+        }
+        function problem5_1() {
+            var x = document.getElementById("R5_1");
+            var y = document.getElementById("R5_2");
+            x.style.display = "none";
+            y.style.display = "block";
+        }
+        function problem5_2() {
+            var x = document.getElementById("R5_1");
+            var y = document.getElementById("R5_2");
+            y.style.display = "none";
+            x.style.display = "block";
+        }
+        function problem6() {
+            var x = Number(document.getElementById("num6_1").value);
+            var y = Number(document.getElementById("num6_2").value);
+            var z = Number(document.getElementById("num6_3").value);
+            if (x >= y && x >= z) {
+                ans = x;
+            }
+            else if (y >= z && y >= x) {
+                ans = y;
+            }
+            else {
+                ans = z;
+            }
+            document.getElementById("R6").innerHTML = ans;
+        }
+        function problem7() {
+            var n = Number(document.getElementById("num7").value);
+            ans = (n * (n + 1)) / 2;
+            document.getElementById("R7").innerHTML = ans;
+        }
+        function problem8_1() {
+            document.div.style.backgroundColor = "red";
+        }
+        function problem8_2() {
+            document.body.style.backgroundColor = "white";
+        }
+        function problem9() {
+            if (isNaN(document.getElementById("num9").value) ) {
+                document.getElementById("R9").innerHTML = "String";
+            }
+            else {
+                document.getElementById("R9").innerHTML = "Number";
+            }
+        }
+        function problem10() {
+            var x = Number(document.getElementById("num10").value);
+            if (x == 0) {
+                document.getElementById("R10").innerHTML = "Zero";
+            }
+            else if (x > 0) {
+                document.getElementById("R10").innerHTML = "Positive";
+            }
+            else
+                document.getElementById("R10").innerHTML = "Negative";
+        }
+    </script>
+</body>
+
+</html>

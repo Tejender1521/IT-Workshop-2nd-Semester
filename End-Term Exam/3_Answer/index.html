@@ -1,0 +1,118 @@
+<!doctype html>
+
+<html>
+<head>
+  
+  <title>Hit_or_Miss</title>
+  <style>
+    body{
+      background-color: #bdd4e7;
+background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+
+    }
+    .grid {
+	width: 606px;
+	height: 606px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.first {
+	height: 200px;
+	width: 200px;
+	border: solid black 1px;
+}
+
+.mouse {
+	background-image: url("download.jpg");
+	background-size: cover;
+}
+
+  </style>
+</head>
+<body >
+<center>
+  <h1><b><u>Score:</u></b></h1>
+  <h2 id="score">0</h2>
+
+  <h2>Time Left:</h2>
+  <h2 id="time-left">60</h2>
+
+  <div class="grid">
+    <div class="first" id="1"></div>
+    <div class="first" id="2"></div>
+    <div class="first" id="3"></div>
+    <div class="first" id="4"></div>
+    <div class="first" id="5"></div>
+    <div class="first" id="6"></div>
+    <div class="first" id="7"></div>
+    <div class="first" id="8"></div>
+    <div class="first" id="9"></div>
+  </div>
+
+  <script>
+    const firsts = document.querySelectorAll('.first')
+const mouse = document.querySelector('.mouse')
+const timeLeft = document.querySelector('#time-left')
+const score = document.querySelector('#score')
+
+let result = 0
+let miss=1
+let hitPosition
+let currentTime = 10
+let timerId = null
+
+function randomFirst() {
+  firsts.forEach(first => {
+    first.classList.remove('mouse')
+  })
+
+  let randomFirst = firsts[Math.floor(Math.random() * 9)]
+  randomFirst.classList.add('mouse')
+
+  hitPosition = randomFirst.id
+}
+
+firsts.forEach(first => {
+  first.addEventListener('mousedown', () => {
+    if (first.id == hitPosition) {
+      result++
+      score.textContent = result
+      
+      hitPosition = null
+    }
+    else
+    {
+      miss++
+    }
+  })
+})
+
+function moveMouse() {
+  timerId = setInterval(randomFirst, 500)
+}
+
+moveMouse()
+
+function countDown() {
+ currentTime--
+ timeLeft.textContent = currentTime
+
+ if (currentTime == 0) {
+   clearInterval(countDownTimerId)
+   clearInterval(timerId)
+   if((result/miss)>2){
+    alert('YOU WIN')
+   }
+   else{
+     alert('YOU LOSE')
+   }
+ }
+
+}
+
+let countDownTimerId = setInterval(countDown, 1000)
+  </script>
+  </center>
+</body>
+</html>

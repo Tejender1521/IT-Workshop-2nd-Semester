@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square or Cube</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <h3>Input a Number to check wither it is a square or a cube or something else: </h3>
+            <input type="number" name="number" id="number">
+            <br>
+            <button id="check" type="button">Click to check</button>
+            <p id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        let isSquare = function (n) {
+            return  Math.sqrt(n) % 1 == 0;
+        };
+        let isCube = function (n) {
+            return  Math.cbrt(n) % 1 == 0;
+        };
+        document.getElementById("check").addEventListener("click", function () {
+        let num = Number(document.querySelector("#number").value);
+
+
+            if (isSquare(num) && isCube(num)) {
+                alert("The given number is a square as well as a cube ");
+            }
+            else {
+                if (isSquare(num)) {
+                    alert("The given numer is a square");
+                }
+                else if (isCube(num)) {
+                    alert("The given numer is a cube");
+                }
+                else {
+                    alert("The given number is neither a square nor a cube of any number");
+                }
+            }
+            console.log(num);
+        });
+    </script>
+</body>
+
+</html>
